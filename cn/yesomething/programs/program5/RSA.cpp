@@ -50,15 +50,14 @@ void initRamdomConfig(){
  */
 void getRamdomE(mpz_t e,mpz_t eulerNumber){
     mpz_init(e);
-    mpz_set(e,eulerNumber);
+    mpz_set_ui(e,65537);
     while(true){
         mpz_class gcd;
-        mpz_sub_ui(e,e,1);
         mpz_gcd(gcd.get_mpz_t(),e,eulerNumber);
         if(gcd == 1){
-            gmp_printf("gcd = %Zx\n",gcd.get_mpz_t());
             break;
         }
+        mpz_add_ui(e,e,1);
     }
 }
 
